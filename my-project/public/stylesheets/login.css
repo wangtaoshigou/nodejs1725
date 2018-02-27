@@ -1,0 +1,71 @@
+body{
+	background:#555 url(/images/ecshop-bg.png);
+	background-size: cover;
+}
+#logo{width: 380px;margin:0 auto;}
+#logo img{width: 248px;height: 65px;margin-left: 66px;}
+#log{margin:30px 0 0 40px;}
+#top{background: url(/images/icloud-bar.png) no-repeat 0 bottom;
+	height: 350px;
+	width: 475px;
+	margin: 0 auto;
+	padding-bottom: 42px;
+	margin-top: 50px;}
+#cont{width: 302px;
+	height: 270px;
+	background: rgba(255,255,255,.85);
+	padding: 5px 75px 25px;
+	margin-left: 10px;
+	padding-top: 56px;
+	}
+.uname{width: 302px;
+	   height: 53px;
+	   background: #fff;
+	   border: 1px solid #ddd;
+	   position: relative;
+	}
+.unm{width: 100%;
+	border: none;
+	height: 48px;
+	padding: 1px 0;
+	color: #8a8a8a;
+	text-indent: 50px;
+	font-size: 12px;
+	outline: none;}
+.iconfont{
+	position: absolute;
+	top: 15px;
+	left: 15px;
+}
+#yzm{
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 104px;
+	height: 36px;
+	background: url(/images/index.png);
+	text-align: center;
+	line-height: 36px;
+	cursor: pointer;
+}
+#dl{
+	margin-top: 20px;
+	width: 302px;
+	height: 53px;
+	background: #fc7878;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+	outline: none;
+}
+#bot{
+	font-size: 12px;
+	color: #666;
+	margin-top: 10px;
+}
+#bot a{
+	color: #41a5e1;
+	margin-left: 25px;
+}

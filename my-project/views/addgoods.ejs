@@ -4,6 +4,7 @@
     <title>模板堂后台</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+    <script type="text/javascript" src="/javascripts/jquery-1.11.1.js"></script>
   </head>
   <body>
   	<!--content-->
@@ -26,11 +27,11 @@
     			<li class="lim">关联文章</li>
     		</div>
     		<div id="tcont">
-    			<form>
+    			<form id="frm" action="/api/add_goods" method="post" enctype="multipart/form-data">
     				<table>
     					<tr>
     						<td class="label">商品名称：</td>
-                            <td><input type="text" name=""></td>
+                            <td><input type="text" name="goods_name" id="goods_name"></td>
     					</tr>
     					<tr>
     						<td class="label"><img src="images/notice.gif">商品货号 :&nbsp;</td>
@@ -50,7 +51,7 @@
     					</tr>
     					<tr>
     						<td class="label">本店售价：</td>
-                            <td><input type="text" name=""><input type="button" name="" value="按市场价计算" class="js"></td>
+                            <td><input type="text" name="price" id="price"><input type="button" name="" value="按市场价计算" class="js"></td>
     					</tr>
     					<tr>
     						<td class="label"><img src="images/notice.gif">会员价格：</td>
@@ -90,7 +91,7 @@
                         </tr>
                         <tr>
                             <td class="label">上传商品图片：</td>
-                            <td><input type="button" name="" class="js" value="选择文件"><br><input type="text" name=""></td>
+                            <td><input type="file" name="img" class="js" value="选择文件" id="img"><br><input type="text" name=""></td>
                         </tr>
                         <tr>
                             <td class="label">上传商品缩略图：</td>
@@ -99,7 +100,7 @@
                         <tr>
                             <td class="label"></td>
                             <td>
-                            <input type="button" name="" class="btn" value="确定">
+                            <input type="button" name="" class="btn" value="确定" onclick="addGoods()" >
                             <input type="reset" name="" class="btn">
                             </td>
                         </tr>
@@ -113,3 +114,9 @@
     </div>
   </body>
 </html>
+<script type="text/javascript">
+    function addGoods(){
+        document.getElementById("frm").submit();
+        location.href = "/goods"
+    }
+</script>

@@ -12,7 +12,7 @@
     		<span class="span1">ECSHOP管理中心</span>
     		<span class="span1"> - 添加新商品</span>
     		<a href="#"><img src="/images/jnsy.png"></a>
-    		<a href="#" id="splb">商品列表</a>
+    		<a href="/addgoods" id="splb">商品列表</a>
     	</div>
     	<form id="spfl">
     		<img src="/images/icon_search.gif">
@@ -83,6 +83,38 @@
     							</a>
     						</td>
     					</tr>
+                        <% for( var i = 0 ; i < list.length ; i++) { %>
+                            <tr>
+                            <td>
+                                <input type="checkbox" name="">
+                                <%= i+1 %>
+                            </td>
+                            <td><%= list[i].goods_name %></td>
+                            <td>233</td>
+                            <td><%= list[i].price %></td>
+                            <td><img src="/images/yes.gif"></td>
+                            <td><img src="/images/yes.gif"></td>
+                            <td><img src="/images/yes.gif"></td>
+                            <td><img src="/images/yes.gif"></td>
+                            <td>100</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>
+                                <a href="#">
+                                    <img src="images/icon_view.gif">
+                                </a>
+                                <a href="#">
+                                    <img src="images/icon_edit.gif">
+                                </a>
+                                <a href="#">
+                                    <img src="images/icon_copy.gif">
+                                </a>
+                                <a href="#">
+                                    <img src="images/icon_trash.gif">
+                                </a>
+                            </td>
+                        </tr>
+                        <% } %>
     				</tbody>
     			</table>
     		</div>

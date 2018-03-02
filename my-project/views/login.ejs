@@ -4,6 +4,7 @@
     <title>登录页面</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/font_0utdqxwamjfywrk9/iconfont.css">
+    <script type="text/javascript" src="/javascripts/jquery-1.11.1.js"></script>
   </head>
   <body>
   	<img src="/images/shopex.png" id="log">
@@ -15,27 +16,76 @@
   			<div id="cont">
   				<div class="uname">
   					<i class="iconfont">&#xe623;</i>
-  					<input type="text" name="" class="unm" placeholder="用户名">
+  					<input type="text" name="" class="unm" placeholder="用户名" id="username">
   				</div>
   				<div class="uname">
   					<i class="iconfont">&#xe65e;</i>
-  					<input type="text" name="" class="unm" placeholder="密码">
+  					<input type="password" name="" class="unm" placeholder="密码"
+  					id="psw">
   				</div>
   				<div class="uname">
   					<i class="iconfont">&#xe60d;</i>
-  					<input type="text" name="" class="unm" placeholder="验证码">
+  					<input type="text" name="" class="unm" placeholder="验证码" id="syzm">
   					<div id="yzm">wtsg</div>
   				</div>
-  				<input type="submit" name="" value="登录" id="dl">
+  				<input type="button" name="" value="登录" id="dl">
   				<div id="bot">
   					<input type="checkbox" name="">保存登录信息
   					<a href="#">忘记密码？</a>
   					<a href="#">返回店铺首页>></a>
   				</div>
-  				
   			</div>
   		</div>
-  		<div id="bottom"></div>
   	</div>
   </body>
 </html>
+<script type="text/javascript">
+function rand(min,max){
+    return Math.round( Math.random()*(max-min) + min);
+}
+
+function getCode(){
+    var arrStr = [];
+    for( var i = 0 ; i < 4 ; i++ ){
+      var code = rand(48,122);
+      if( code>=58&&code<=64 || code>=91&&code<=96 ){
+        i--;
+      }else{
+        arrStr[i] = String.fromCharCode(code);
+      }
+    }
+    return arrStr.join("");
+  }
+  $("#yzm").html(getCode())
+  $("#yzm").click(function(){
+    $("#yzm").html(getCode());
+})
+$("#dl").click(function(){
+  if( $("#syzm").val() != $("#yzm").html()){
+    alert("验证码不正确")
+  }
+  if( $("#syzm").val() == $("#yzm").html()){
+    login();
+
+  }
+})
+
+	function login() {
+		$.ajax({
+			url: "/api/login",
+			type: "post",
+			data: {
+				username: $("#username").val(),
+				psw: $("#psw").val()
+			},
+			success: function(res) {
+				if(res.status ==1){
+          location.href = "/";
+          alert(res.message)
+        }else{
+          alert(res.message);
+        }
+			}
+		})
+	}
+</script>

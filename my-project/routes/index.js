@@ -13,10 +13,31 @@ router.get('/login', function(req, res, next) {
 router.get('/addgoods', function(req, res, next) {
   res.render('addgoods', { title: 'Express' });
 });
-router.get('/goods', function(req, res, next) {
-  GoodsModel.find({},function(err,docs){
-  	res.render("goods",{list:docs});
+router.get('/api/goods_del', function(req, res, next) {
+  GoodsModel.findByIdAndRemove({_id: req.query.gid},function(err){
+  	var result = {
+  		status: 1,
+  		message: "商品删除成功"
+  	};
+  	if(err){
+  		result.status = -119;
+  		result.message = "删除失败";
+  	}
+  	res.send(result);
   })
+});
+router.get('/goods', function(req, res, next) {
+	var pageNo = parseInt(req.query.pageNo || 1);
+	var count = parseInt(req.query.count || 3);
+	var gname = req.query.kword;
+	var query = GoodsModel.find({goods_name: new RegExp(gname)}).skip((pageNo-1)*count).limit(count).sort({date: -1});
+	query.exec(function(err,result){
+		console.log(result)
+		res.render("goods",{list: result,pageNo: pageNo,count: count});
+	})
+  // GoodsModel.find({},function(err,docs){
+  // 	res.render("goods",{list:docs});
+  // })
 });
 router.post("/api/add_goods",function(req,res){
 	var form = new multiparty.Form({
@@ -34,7 +55,7 @@ router.post("/api/add_goods",function(req,res){
 		gm.img = imgName;
 		gm.save(function(err){
 			if (!err) {
-				res.send("文件上传成功")
+				res.send("文件上传成功");
 			}else{
 				res.send("文件上传失败")
 			}

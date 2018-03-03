@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+w<!DOCTYPE html>
 <html>
   <head>
     <title>模板堂后台</title>
@@ -17,7 +17,7 @@
     	</div>
     	<div id="cont">
     		<div id="ctop">
-    			<li class="lid">通用信息</li>
+    			<li class="lid lim">通用信息</li>
     			<li class="lim">详细描述</li>
     			<li class="lim">其他信息</li>
     			<li class="lim">商品属性</li>
@@ -100,7 +100,8 @@
                         <tr>
                             <td class="label"></td>
                             <td>
-                            <input type="button" name="" class="btn" value="确定" onclick="addGoods()" >
+                            <input type="button" name="" class="btn" value="确定" onclick="addGoods()"
+                            >
                             <input type="reset" name="" class="btn">
                             </td>
                         </tr>
@@ -117,6 +118,8 @@
 <script type="text/javascript">
     function addGoods(){
         document.getElementById("frm").submit();
-        location.href = "/goods"
     }
+    $("#ctop li").click(function(){
+        $(this).addClass("lid").siblings().removeClass("lid")
+    })
 </script>
